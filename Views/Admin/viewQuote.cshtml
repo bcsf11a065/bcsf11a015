@@ -1,0 +1,143 @@
+﻿@model List<quotes_site.Models.Quote>
+
+@{
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+}
+
+<header>
+    <div class="row-top">
+        <div class="main">
+            <div class="wrapper">
+                <h1><a href="/Admin/adminStart">Quotes Garden</a></h1>
+                <nav>
+                    <ul class="menu">
+                        <li><a href="/Admin/adminStart">Home</a></li>
+                        <li><a href="/Admin/add">Add</a></li>
+                        <li><a class="active" href="/Admin/viewQuote">View</a></li>
+                        <li><a href="/Admin/search">Search </a></li>
+                        <li><a href="/Admin/delete">Delete </a></li>
+                        <li><a href="/Admin/update">Update</a></li>
+                        <li><a href="/Admin/addAdmin">Add Admin</a></li>
+                        <li><a href="/Admin/logout">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="row-bot">
+        <div class="row-bot-bg">
+            <div class="main">
+                <h2>Quotes Garden</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="content">
+    <div class="main">
+        <div class="wrapper">
+
+            <article class="col-2">
+                <br />
+                <br />
+                <h3 style="font-size:40px;text-align:center;"><b><i><u>Category List</u></i></b></h3>
+
+
+                <center>
+                    <div id="Fiction"><h2><span>Fiction</span></h2></div>
+
+                    <br />
+
+                    <table id="t1">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Fiction")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/Admin/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+
+                        }
+
+                    </table>
+
+                    <div id="Non-Fiction"><h2><span>Non-Fiction</span></h2></div>
+
+                    <br />
+                    <table id="t1">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Non-Fiction")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/Admin/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+                        }
+
+                    </table>
+
+                    <div id="Friendship"><h2><span>Friendship</span></h2></div>
+
+                    <br />
+                    <table id="t4">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Friendship")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/Admin/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+                        }
+
+                    </table>
+
+                    <div id="Wisdom"><h2><span>Wisdom</span></h2></div>
+
+                    <br />
+                    <table id="t6">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Wisdom")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/Admin/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+
+                        }
+
+                    </table>
+
+
+
+                    <div id="Nature"><h2><span>Nature</span></h2></div>
+
+                    <br />
+                    <table id="t8">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Nature")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/Admin/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+
+                        }
+
+                    </table>
+
+                    <center>
+            </article>
+        </div>
+    </div>
+
+</section>

@@ -1,0 +1,86 @@
+﻿@model quotes_site.Models.Quote
+@{
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+}
+
+<body id="page7">
+    <header>
+        <div class="row-top">
+            <div class="main">
+                <div class="wrapper">
+                    <h1><a href="/Admin/adminStart">Quotes Garden</a></h1>
+                    <nav>
+                        <ul class="menu">
+                            <li><a href="/Admin/adminStart">Home</a></li>
+                            <li>@Html.ActionLink("Add", "add", "Admin")</li>
+                            <li><a href="/Admin/viewQuote">View</a></li>
+                            <li><a class="active" href="/Admin/search">Search </a></li>
+                            <li><a href="/Admin/delete">Delete </a></li>
+                            <li><a href="/Admin/update">Update</a></li>
+                            <li><a href="/Admin/addAdmin">Add Admin</a></li>
+                            <li><a href="/Admin/logout">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row-bot">
+            <div class="row-bot-bg">
+                <div class="main">
+                    <h2>Quotes Garden</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="content">
+        <div class="main">
+            <div class="wrapper">
+
+                <article class="col-2">
+                    <h3 class="p1">Search Quote</h3>
+
+                    <div id="d1">
+                        <fieldset>
+                          
+                            <span class="text-form">
+                                @Html.Label("Quote's Name")
+                            </span>
+                            <input type="text" id="t1" />
+
+                            <br />
+                            <br />
+
+                            <div class="wrapper">
+                                <div class="extra-wrap">
+                                    <div style="text-align:center"><input type="button" value="Search" id="b1" style="width:150px; font-size:large ; height:30px ; border-style:groove; border-width:thin; border-color:black; border-radius:5px;  text-transform: capitalize;" /></div>
+                                </div>
+                            </div>
+                            <div id="d2"></div>
+                            @Scripts.Render("~/bundles/jquery")
+
+                            <script>
+                                $(document).ready(function () {
+                                    $('#b1').click(function () {
+                                        var name = $('#t1').val();
+                                        $.getJSON("/Admin/openQuote?sender=" + name, function (data) {
+
+                                            $('#d2').empty();
+
+                                            $.each(data, function (i, item) {
+
+                                                $('#d2').append('<img src="' + item.Image + '" height="350" width="350"/>');
+                                            });
+                                        });
+                                    });
+                                });
+                            </script>
+
+                        </fieldset>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+
+</body>

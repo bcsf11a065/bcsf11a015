@@ -1,0 +1,140 @@
+@model List<quotes_site.Models.Quote>
+@{
+    Layout = "~/Views/Shared/userView.cshtml";
+}
+
+<header>
+    <div class="row-top">
+        <div class="main">
+            <div class="wrapper">
+                <h1><a href="/User/index">Quotes Garden</a></h1>
+                <nav>
+                    <ul class="menu">
+                        <li><a href="/User/index">About</a></li>
+                        <li><a class="active" href="/User/menu">Quotes</a></li>
+                        <li><a href="/User/search">Search </a></li>
+                        <li><a href="/Admin/login">Admin Login</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="row-bot">
+        <div class="row-bot-bg">
+            <div class="main">
+                <h2>Quotes Garden</h2>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section id="content">
+    <div class="main">
+        <div class="wrapper">
+
+            <article class="col-2">
+                <br />
+                <br />
+                <h3 style="font-size:40px;text-align:center;"><b><i><u>Category List</u></i></b></h3>
+
+
+                <center>
+                    <div id="Fiction"><h2><span>Fiction</span></h2></div>
+
+                    <br />
+
+                    <table>
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Fiction")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/User/openQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+
+                        }
+
+                    </table>
+
+
+
+                    <div id="Non-Fiction"><h2><span>Non-Fiction</span></h2></div>
+
+                    <br />
+                    <table id="t1">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Non-Fiction")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/User/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+                        }
+
+                    </table>
+
+                    <div id="Friendship"><h2><span>Friendship</span></h2></div>
+
+                    <br />
+                    <table id="t4">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Friendship")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/User/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+                        }
+
+                    </table>
+
+                    <div id="Wisdom"><h2><span>Wisdom</span></h2></div>
+
+                    <br />
+                    <table id="t6">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Wisdom")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/User/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+
+                        }
+
+                    </table>
+
+
+
+                    <div id="Nature"><h2><span>Nature</span></h2></div>
+
+                    <br />
+                    <table id="t8">
+                        @foreach (var q in Model)
+                        {
+                            if (q.Category == "Nature")
+                            {
+                                <tr>
+                                    <td>@q.Name</td>
+                                    <td> <a href="/User/getQuote/@q.Id">Open</a></td>
+                                </tr>
+                            }
+
+                        }
+
+                    </table>
+
+                    <center>
+            </article>
+        </div>
+    </div>
+
+</section>

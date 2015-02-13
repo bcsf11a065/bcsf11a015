@@ -1,0 +1,84 @@
+﻿@model quotes_site.Models.Quote
+@{
+    Layout = "~/Views/Shared/adminLayout.cshtml";
+}
+
+<body id="page9">
+    <header>
+        <div class="row-top">
+            <div class="main">
+                <div class="wrapper">
+                    <h1><a href="/Admin/adminStart">Quotes Garden</a></h1>
+                    <nav>
+                        <ul class="menu">
+                            <li><a href="/Admin/adminStart">Home</a></li>
+                            <li><a href="/Admin/add">Add</a></li>
+                            <li><a href="/Admin/searchQuote">View</a></li>
+                            <li><a href="/Admin/search">Search </a></li>
+                            <li><a href="/Admin/delete">Delete </a></li>
+                            <li><a class="active" href="/Admin/update">Update</a></li>
+                            <li><a href="/Admin/addAdmin">Add Admin</a></li>
+                            <li><a href="/Admin/logout">Logout</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="row-bot">
+            <div class="row-bot-bg">
+                <div class="main">
+                    <h2>Quotes Garden</h2>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="content">
+        <div class="main">
+            <div class="wrapper">
+
+                <article class="col-2">
+                    <h3 class="p1">Update Quote</h3>
+                    @using (Html.BeginForm("updateQuote", "Admin", FormMethod.Post, new { id = "contact-form", enctype = "multipart/form-data" }))
+                    {
+                        <fieldset>
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+
+                            <label>
+                                <span class="text-form">Quote's Name:</span>
+                                @Html.TextBoxFor(m => m.Name)
+                                &nbsp&nbsp&nbsp&nbsp <span style="color: red">@Html.ValidationMessageFor(model => model.Name) </span>
+                            </label>
+
+                            <label>
+                                <span class="text-form">Category:</span>
+                                @Html.TextBoxFor(m => m.Category)
+                                &nbsp&nbsp&nbsp&nbsp <span style="color: red">@Html.ValidationMessageFor(model => model.Category) </span>
+                            </label>
+
+                            <br />
+
+                            <label>
+                                <span class="text-form">Upload Picture:</span>
+                                <input type="file" name="image" />
+                                &nbsp&nbsp&nbsp&nbsp <span style="color: red">@Html.ValidationMessageFor(model => model.Image) </span>
+                            </label>
+
+                            <br />
+
+                            <div class="wrapper">
+                                <div class="extra-wrap">
+                                    <div style="text-align:center"><input type="submit" value="Update" style="width:145px; font-size:large ; height:30px ; border-style:groove; border-width:thin; border-color:black; border-radius:5px;text-transform: capitalize;" /></div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    }
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        @Scripts.Render("~/bundles/jqueryval")
+    </script>
